@@ -20,19 +20,29 @@ app.get("/", (req, res) => {
 
 app.post("/recipe", (req, res) => {
 
-  switch(req.body.choice){
-    case "chicken":
-     data = JSON.parse(recipeJSON)[0];
-      break;
-    case "beef":
-      data = JSON.parse(recipeJSON)[1];
-      break;
-    case "fish":
-      data = JSON.parse(recipeJSON)[2]
-      break;
-    default: 
-      break;
+  if (req.body.choice === "chicken") {
+    data = JSON.parse(recipeJSON)[0];
+  } else if (req.body.choice === "beef") {
+    data = JSON.parse(recipeJSON)[1];
+  } else if (req.body.choice === "fish") {
+    data = JSON.parse(recipeJSON)[2]
+  } else {
+    console.log("Select you preferred Taco type")
   }
+
+  // switch(req.body.choice){
+  //   case "chicken":
+  //    data = JSON.parse(recipeJSON)[0];
+  //     break;
+  //   case "beef":
+  //     data = JSON.parse(recipeJSON)[1];
+  //     break;
+  //   case "fish":
+  //     data = JSON.parse(recipeJSON)[2]
+  //     break;
+  //   default: 
+  //     break;}
+  
   res.redirect("/");
 
   //Step 3: Write your code here to make this behave like the solution website.
